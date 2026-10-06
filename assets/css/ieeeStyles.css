@@ -1,0 +1,155 @@
+/* body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+} */
+
+.meta-nav {
+    min-height: 40px;
+    background: #000000;
+    color: #ffffff;
+    padding: 0px;
+    margin: 0px;
+}
+
+/* #meta-ieee-logo {
+    margin: 0px;
+    float:right;
+    font-family: inherit;
+    font-size: 1.2em;
+    line-height: 125%;
+    border: 0;
+    margin: 0;
+ } */
+
+ #meta-ieee-logo {
+    margin: 0px;
+    float:right;
+}
+
+#meta-ieee-logo .joinIEEE{
+    float: right;
+    color: #fff;
+    padding: 11px 16px;
+}
+
+#meta-ieee-logo .joinIEEE:link, #meta-ieee-logo .joinIEEE:visited, #meta-ieee-logo .joinIEEE:active {
+    color: #fff;
+    text-decoration: none;
+    font-size: calc(0.4rem + 0.5vw);
+}
+
+#meta-ieee-logo .joinIEEE:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+#meta-ieee-logo img{
+    float: right;
+}
+
+/* #meta-ieee-logo img{
+    padding: 10px 36px 0px 0px;
+} */
+
+#meta-ieee-logo img{
+    padding: 5px 36px 0px 0px;
+    /* height: calc(40px - 0.9vw); */
+}
+
+@media (max-width: 800px) {
+.meta-nav {
+    max-height: 40px;
+    background: #000000;
+    color: #ffffff;
+    padding: 0px;
+    margin: 0px;
+}
+/* .meta-ieee-logo {
+    padding: 20px 0px 0px 0px;
+    float:right;
+    max-width: 100;
+} */
+#meta-ieee-logo img{
+    /* height: 0px; */
+    visibility: hidden;
+}
+#meta-ieee-logo .joinIEEE:link, #meta-ieee-logo .joinIEEE:visited, #meta-ieee-logo .joinIEEE:active {
+    /* font-size: 0px; */
+    visibility: hidden;
+}
+}
+
+.ieee-p-header {
+    font-family: inherit;
+    font-size: .9rem;
+    line-height: 125%;
+    border: 0;
+    margin: 0;
+}
+
+/* #ieee-meta-a {
+    color: #fff;
+    text-align: left;
+    padding: 11px 36px;
+    float: left;
+    font-family: inherit;
+    font-size: 1.2em;
+    line-height: 125%;
+    border: 0;
+    margin: 0;
+} */
+
+#ieee-meta-a {
+    color: #fff;
+    text-align: left;
+    padding: 11px 36px;
+    float: left;
+}
+
+#ieee-meta-a a:link, #ieee-meta-a a:visited, #ieee-meta-a a:active {
+    color: #fff;
+    text-decoration: none;
+    font-size: calc(0.4rem + 0.5vw);
+}
+
+#ieee-meta-a a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.ieee-p-footer {
+	font-size: .9em;
+	line-height: 120%;
+	padding: 0 0 10px 0;
+	border: 0;
+	margin: 0;
+}
+
+
+/* #util {
+	color: #ffffff;
+	text-align: left;
+	padding: 11px 36px;
+    font-size: 1.2em;
+	line-height: 120%;
+	border: 0;
+	margin: 0;
+} */
+
+#util {
+	color: #ffffff;
+	text-align: left;
+	padding: 11px 36px;
+	
+}
+
+#util a:link, #util a:visited, #util a:active {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+#util a:hover {
+	color: #ffffff;
+	text-decoration: underline;
+}

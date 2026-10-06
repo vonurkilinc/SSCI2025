@@ -1,0 +1,14 @@
+.custom-caption {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    color: white; /* Text color */
+    font-size: 20px; /* Text size */
+    padding: 10px; /* Padding around text and logo */
+  }
+  .custom-caption img.logo {
+    width: 50px; /* Logo size */
+    margin-right: 15px; /* Space between logo and text */
+  }

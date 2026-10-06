@@ -1,0 +1,262 @@
+body {
+	overflow: auto;
+}
+
+.global {
+	background-color: rgba(255, 255, 255, 1);
+	width: 100%;
+	/*	overflow: hidden;*/
+	display: flex;
+	flex-direction: column;
+}
+
+/* .navbar-custom,
+.navbar-collapse {
+    background-color: rgb(210, 219, 222);
+    font-size: x-large;
+} */
+
+/* .navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: rgb(255, 255, 255);
+    font-size: x-large;
+}
+
+.navbar-custom .dropdown-item {
+    color: rgb(0, 0, 0);
+    font-size: x-large;
+} */
+
+.welcome-section {
+    position: relative;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/* margin-top: -120px; */
+
+    
+}
+
+.welcome-section::before {
+    content: "";
+    position: absolute;
+	top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+
+	background-image: url(../images/trondheim4.jpg);
+	background-repeat: no-repeat;
+	/* background-size: 100% 100%; */
+	background-size: cover;
+    opacity: 0.4;
+}
+
+.welcome-title {
+	container-type: size;
+	display: flex;
+	flex-direction: column;
+	height: 40%;
+	line-height: 1;
+	min-width: 50cqh;
+	min-height: 30cqh;
+	margin-top: -20%;
+}
+
+.main-text {
+	/* flex: 3  */
+    display: flex;
+	/* flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start; */
+	flex-direction: column;
+	align-items: center;
+}
+
+.TRONDHEIM {
+    width: 200%;
+	color: rgb(147, 36, 23);
+	font-family: Roboto;
+	text-align: center;
+	/* font-size: 18cqh; */
+	font-size: calc(1.6rem + 1.1vw);
+	letter-spacing: 2px;
+    /* margin-top: -5px; */
+	/* margin-bottom: 5%; */
+}
+
+.SSCI {
+	/* width: 100%; */
+	color: #2867b4;
+	font-family: Roboto;
+	text-align: center;
+	/* font-size: 100cqh; */
+	font-size: calc(10.5rem + 3.5vw);
+	letter-spacing: 15px;
+    margin-top: -5%;
+    text-shadow: 0 0 20px #090644;
+}
+
+.dates {
+    width: 200%;
+	color: rgb(0, 0, 0);
+	text-align: center;
+	font-family: Roboto;
+	/* font-size: 18cqh; */
+	font-size: calc(1.6rem + 1.1vw);
+	letter-spacing: 2px;
+    /* margin-top: -50px; */
+	margin-top: -5%;
+}
+
+.Countdown {
+	flex: 1;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: flex-end;
+    margin-top: 10%;
+
+}
+
+.Countdown-item {
+	display: flex;
+	align-items: baseline;
+	flex-direction: column;
+	align-items: center;
+}
+
+.Countdown-big {
+	color: rgb(147, 36, 23);
+	font-family: Roboto;
+	text-align: left;
+	/* font-size: 30cqh; */
+	font-size: calc(3.3rem + 2vw);
+	letter-spacing: 0;
+}
+
+.Countdown-small {
+	color: rgb(0, 0, 0);
+	font-family: Roboto;
+	text-align: left;
+	/* font-size: 10cqh; */
+	font-size: calc(0.9rem + 0.9vw);
+	letter-spacing: 0;
+}
+
+.titles {
+    margin-top: 0px;
+}
+
+.feature-title {
+    font-family: Roboto;
+    font-size: calc(1.3rem + 1.5vw);
+    font-weight: 300;
+    line-height: 1.2;
+    font-weight: 700 !important;
+}
+
+.features-list {
+    font-family: Roboto;
+    font-size: calc(0.9rem + 1.2vw);
+    font-weight: 300;
+    line-height: 1.2;
+    /* font-weight: 700 !important; */
+}
+
+.features-text {
+    font-family: Roboto;
+    font-size: calc(1rem + 0.1vw);
+    /* font-size: 1.4rem; */
+    /* font-weight: 100; */
+    /* line-height: 1.2; */
+    /* font-weight: 700 !important; */
+}
+
+.img-centered {
+    text-align: center;
+}
+
+.card-border {
+    border: 3px solid rgb(147, 36, 23);
+    border-radius: 10%;
+
+    /* background-image: url(../images/Logo_Final.webp);
+	background-repeat: no-repeat;
+	background-size: 100% 100%; */
+	/* background-size: cover; */
+}
+
+.circle {
+    /* margin: 0 auto; */
+    border-radius: 50% !important;
+    width: 250px;
+    margin-top: 10px;
+}
+
+.member-name {
+    font-family: Roboto;
+    font-size: calc(1.1rem + 0.7vw);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.member-title {
+    font-family: Roboto;
+    font-size: calc(0.8rem + 0.7vw);
+    font-weight: 200;
+    line-height: 1;
+    margin-top: -10px;
+    text-align: center;
+    color: #2F8AA5;
+}
+
+.member-uni {
+    font-family: Roboto;
+    font-size: calc(0.6rem + 0.7vw);
+    /* font-weight: 300; */
+    line-height: 1;
+    margin-top: -10px;
+    text-align: center;
+    color: rgb(147, 36, 23);;
+}
+
+.member-btn {
+    color: rgb(255, 255, 255);
+    background-color: #2F8AA5;
+    font-family: Roboto;
+    font-size: 25px;
+    border: 1px solid rgb(147, 36, 23);
+    margin-bottom: 50px;
+}
+
+.sponser-margin {
+	display: flex;
+	flex-flow: row wrap;
+    margin-bottom: 50px
+}
+
+.sponser-column-item {
+	flex-basis: 19%;
+	flex-grow: 1;
+	margin: 0.5% !important;
+	min-width: 220px;
+	padding: 15px;
+}
+
+.footer-bg {
+    background-color: #F4F8F9;
+	padding-top: 1%;
+}
+
+/* .footer-logo {
+    margin-top: 5%;
+} */
+
+.footer-menu {
+	margin-left: 10px;
+}
