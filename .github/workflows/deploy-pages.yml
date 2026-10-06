@@ -1,0 +1,101 @@
+name: Deploy static site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Render PHP routes as static HTML
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p _site/view
+          cp -R assets css images _site/
+          find view -maxdepth 1 -type f -name '*.pdf' -exec cp '{}' _site/view/ \;
+
+          php -S 127.0.0.1:8080 -t . > /tmp/ssci-php-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+
+          for attempt in {1..20}; do
+            if curl --fail --silent http://127.0.0.1:8080/ > /dev/null; then
+              break
+            fi
+            if [[ "$attempt" == 20 ]]; then
+              cat /tmp/ssci-php-server.log
+              exit 1
+            fi
+            sleep 1
+          done
+
+          mapfile -t routes < <(
+            php -r '
+              $routes = ["home"];
+              foreach (array_merge(["index.php"], glob("view/*.php")) as $file) {
+                  $source = file_get_contents($file);
+                  preg_match_all("/case\\s+\x27([^\x27]+)\x27\\s*:/", $source, $cases);
+                  preg_match_all("/\\?ui=([A-Za-z0-9-]+)/", $source, $links);
+                  $routes = array_merge($routes, $cases[1], $links[1]);
+              }
+              $routes = array_values(array_unique($routes));
+              sort($routes);
+              echo implode(PHP_EOL, $routes), PHP_EOL;
+            '
+          )
+
+          for route in "${routes[@]}"; do
+            output="${route}.html"
+            if [[ "$route" == "home" ]]; then
+              output="index.html"
+            fi
+            curl --fail --silent --show-error \
+              "http://127.0.0.1:8080/?ui=${route}" \
+              --output "_site/${output}"
+          done
+
+          curl --fail --silent --show-error \
+            'http://127.0.0.1:8080/?ui=not-found' \
+            --output _site/404.html
+
+          find _site -maxdepth 1 -type f -name '*.html' -print0 \
+            | xargs -0 perl -0pi -e \
+              's/href="\?ui=home"/href=".\/index.html"/g; s/href="\?ui=([^"#]+)(#[^"]*)?"/href=".\/$1.html$2"/g'
+
+          touch _site/.nojekyll
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
